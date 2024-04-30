@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot name="sps">
         <div class="comp">
-            <img src="/images/logo.png" class="logotip" alt="" width="auto" height="200" >
+            <img src="/Images/logo.png" class="logotip" alt="" width="auto" height="200" >
             <p>Кулинарное путешествие прямо к вашему столу!</p>
         </div>
 
