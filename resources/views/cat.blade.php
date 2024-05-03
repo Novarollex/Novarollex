@@ -30,6 +30,11 @@
   <button class="card-link btn btn-dark non-user">Добавить в корзину</button>
   <a class="card-link btn btn-dark bs" style="margin-left:15%;" href="/card/{{$item->id}}">Перейти в описание</a>
   </div>
+  @elseif(session()->get('admin') == 'true')
+  <div class="card-body lks">
+  <a class="card-link btn btn-dark" href="/red_prod/{{$item->id}}">Редактировать</a>
+  <a class="card-link btn btn-dark bs" style="margin-left:15%;" href="/rem_prod/{{$item->id}}">Удалить</a>
+  </div>
   @else
   <div class="card-body lks">
   <button class="card-link btn btn-dark non-auth">Добавить в корзину</button>

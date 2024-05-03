@@ -281,6 +281,40 @@ class CatController extends Controller
         return view('cat',['prods' => $prods]);
     }
 
+    public function red_prod($id)
+    {
+        $find = prods::find($id);
+        return view('red_prod',['prods' => $find]);
+    }
+
+    public function rem_prod($id)
+    {
+        $prods = prods::find($id);
+        $prods->delete();
+        return redirect('/cat');
+    }
+
+    public function red_prod_res(Request $request)
+    {
+        $name = $request->input('name');
+        $find = prods::where('name','=', $name)->first();
+        $upak_mass = $request->input('upak_mass');
+        $upak_price = $request->input('upak_price');
+        $type = $request->input('type');
+        $img = $request->input('img');
+        $descr = $request->input('descr');
+
+        $find->name=$name;
+        $find->upak_mass=$upak_mass;
+        $find->upak_price=$upak_price;
+        $find->type=$type;
+        $find->img=$img;
+        $find->descr=$descr;
+        $find->save();
+
+        return redirect('/cat');
+    }
+
     public function inpt(Request $request)
     {
         $login=request()->input('login');
@@ -538,6 +572,7 @@ class CatController extends Controller
 
             $new->save();
         }
+        return redirect('/admin');
     }
 
     public function confirm(Request $request)
