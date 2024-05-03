@@ -86,7 +86,7 @@ class CatController extends Controller
 
         $mess = $find['surn']." ".$find['name']." ".$find['patron'].", мы заинтересованы в вашей кандидатуре на вакансию 'Доставщик'. Перезвоните нам на наш номер: +7 (950) 175 72 33.
 Логин и пароль для входа :".$login." ".$pass;
-        mail($find['email'], 'Работа', $mess, 'From: culinaryoasis@mail.ru');
+        mail($find['email'], 'Работа', $mess, 'From: culinaryoasis@culinaryoasis.ru');
 
         $find->delete();
 

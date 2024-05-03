@@ -23,11 +23,11 @@
                     <div class="infa">
                     <p><strong>Создан</strong> :{{$key->created_at}}</p>
                     <p><strong>Статус</strong> :{{$key->status}}</p>
+                    <hr style="max-width:300px;">
                     </div>
-                    <hr style="width:430px;margin-left:-35%;">
                 @endforeach
             </div>
 
-            </div>
+        </div>
     </x-slot>
 </x-layout>

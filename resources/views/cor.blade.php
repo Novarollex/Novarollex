@@ -11,7 +11,7 @@
                         <button id='{{$stoim["$key"] * $value}}' value="{{$key}}" class="link-dark delete" style="margin-top:30px;padding:none;background:none;height:20px;weight:20px;border:none;">✕</button>
                     </li>
 
-                        <hr class="{{$key}}" style="width:640px;">
+                        <hr class="{{$key}}" style="max-width:840px;">
 
 
                     @endforeach
