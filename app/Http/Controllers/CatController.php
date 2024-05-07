@@ -32,6 +32,41 @@ class CatController extends Controller
         return view('reg');
     }
 
+    public function recovery(){
+        return view('recovery');
+    }
+    
+    public function recovery_obr(Request $request){
+        $name = $request->input('name');
+
+        $user = users::where('login','=',$name)->first();
+        $email = $user['email'];
+        $pass = "";
+        $alphab = "abcdefghiklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTUVWXYZ";
+        $numbrs = "1234567890!@#$%&";
+        for($i=0; $i < 5; $i++){
+            $index = rand(0,strlen($alphab)-1);
+            $pass .= $alphab[$index];
+        }
+
+        for($i=0; $i < 3; $i++){
+            $index = rand(0,strlen($numbrs)-1);
+            $pass .= $numbrs[$index];
+        }
+
+        $hash_pass = password_hash($pass,PASSWORD_DEFAULT);
+        if(!empty($user)){
+            $mess = $user['surn']." ".$user['name']." ".$user['patron'].", Новый пароль для входа :".$pass;
+        mail($email, 'Работа', $mess, 'From: culinaryoasis@culinaryoasis.ru');
+            $user->pass=$hash_pass;
+            $user->save();
+            dump($email);
+            echo '<script>alert("На электронную почту указанного логина выслан новый пароль")</script>';
+            //return redirect('auth');
+        }else {echo '<script>alert("Данный пользователь не найден")</script>';
+            return view('recovery');}
+    }
+
     public function view_shifts()
     {
         $all = shifts::all();
@@ -98,7 +133,7 @@ class CatController extends Controller
     {
         $find = shifts::find($id);
         $mess = $find['surn']." ".$find['name']." ".$find['patron'].", мы внимательно изучили вашу заявку, но , к сожалению, не можем принять вас на работу.";
-        mail($find['email'], 'Работа', $mess, 'From: culinaryoasis@mail.ru');
+        mail($find['email'], 'Работа', $mess, 'From: culinaryoasis@culinaryoasis.ru');
 
         $find->delete();
 

@@ -11,6 +11,7 @@
     <input type="password" class="form-control" id="pass" name="pass" required>
   </div>
   <button type="submit" class="btn btn-dark">Отправить</button>
+  <a href="/recover">Забыли пароль?</a>
 </form>
     </x-slot>
 </x-layout>

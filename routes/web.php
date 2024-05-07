@@ -38,6 +38,8 @@ Route::get('/check',[CatController::class,'ch']);
 Route::get('/exit',[CatController::class,'exit']);
 Route::get('/zaki',[CatController::class,'zaki']);
 Route::get('/admin',[CatController::class,'admin']);
+Route::get('/recover',[CatController::class,'recovery']);
+Route::post('/recovery_obr',[CatController::class,'recovery_obr']);
 Route::post('/comms',[CatController::class,'comms']);
 Route::get('/k_h',[CatController::class,'k_h']);
 Route::get('/des',[CatController::class,'des']);
